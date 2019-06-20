@@ -1,5 +1,4 @@
 class RepoEntity {
-
   const RepoEntity({
     this.name,
     this.fullName,
@@ -11,10 +10,10 @@ class RepoEntity {
   final int stars;
 
   factory RepoEntity.fromJson(Map<String, dynamic> json) {
-    return  RepoEntity(
+    return RepoEntity(
       name: json['name'],
-      fullName: json['full_name'],
-      stars: json['stargazers_count'],
+      fullName: json['nameWithOwner'],
+      stars: json['stargazers']['totalCount'],
     );
   }
 
@@ -23,7 +22,7 @@ class RepoEntity {
     final String fullName,
     final int stars,
   }) {
-    return  RepoEntity(
+    return RepoEntity(
       name: name ?? this.name,
       fullName: fullName ?? this.fullName,
       stars: stars ?? this.stars,
